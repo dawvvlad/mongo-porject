@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
-import jakarta.annotation.PostConstruct;
 import org.example.nosql.dto.Movie;
 import org.springframework.stereotype.Component;
 
