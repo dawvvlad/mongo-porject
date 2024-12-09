@@ -2,11 +2,12 @@ package org.example.nosql.repository;
 
 import org.example.nosql.dto.*;
 import org.springframework.data.mongodb.repository.Aggregation;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface AggregationMovieRepository extends CrudRepository<Movie, Long> {
+public interface AggregationMovieRepository extends MongoRepository<Movie, Long> {
 
     /**
      * Фильм с максимальной рентабельностью
@@ -79,4 +80,6 @@ public interface AggregationMovieRepository extends CrudRepository<Movie, Long> 
     })
     List<GenreProfitAnalysis> findMostProfitableGenres();
 
+    List<Movie> findByBudgetGreaterThanAndScoreGreaterThan(double budget, double score);
+    List<Movie> findByBudgetGreaterThanAndGrossGreaterThanAndScoreGreaterThan(double budget, double gross, double score);
 }

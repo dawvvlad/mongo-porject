@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.beans.Transient;
 import java.io.Serializable;
 
 @AllArgsConstructor
@@ -17,14 +18,21 @@ public class Movie implements Serializable {
     private String genre;
     private String year;
     private String released;
-    private double score;
-    private double votes;
+    private Double score;
+    private Double votes;
     private String director;
     private String writer;
     private String star;
     private String country;
-    private double budget;
-    private double gross;
+    private Double budget;
+    private Double gross;
     private String company;
-    private double runtime;
+    private Double runtime;
+
+    public Double getProfitability() {
+        if (budget != null && budget > 0 && gross != null) {
+            return gross / budget;
+        }
+        return null;
+    }
 }
